@@ -3,12 +3,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
+import store from './store'
 import App from './App'
 import DashboardPage from './pages/DashboardPage'
+import LoginPage from './pages/LoginPage'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
-
+Vue.component('app', App)
 /* eslint-disable no-new */
 /*
 new Vue({
@@ -19,7 +21,7 @@ new Vue({
 */
 
 const routes = [
-  {path: '/', component: App, name: 'home'},
+  {path: '/', component: LoginPage, name: 'home'},
   {path: '/dashboard', component: DashboardPage, name: 'dashboard', meta: {requiresAuth: true}}
 ]
 
@@ -41,5 +43,5 @@ router.beforeEach((to, from, next) => {
 })
 
 new Vue({
-  router
+  router, store
 }).$mount('#app')
