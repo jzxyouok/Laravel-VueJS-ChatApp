@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import {userListUrl, getHeader} from './../../config'
+import {userListUrl, getHeader, getUserConversationUrl} from './../../config'
 
 const state = {
   userList: {},
@@ -32,14 +32,13 @@ const actions = {
   },
   setCurrentChatUser: ({commit}, user) => {
     commit('SET_CURRENT_CHAT_USER', user)
-    /*
     let postData = {id: user.id}
     return Vue.http.post(getUserConversationUrl, postData, {headers: getHeader()})
       .then(response => {
+        console.log(response.body.data)
         commit('SET_CURRENT_CHAT_USER', user)
-        // commit('SET_CONVERSATION', response.body.data)
+        commit('SET_CONVERSATION', response.body.data)
       })
-    */
   }
 }
 

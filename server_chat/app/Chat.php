@@ -8,7 +8,7 @@ use App\User;
 class Chat extends Model
 {
     protected $fillable = [
-        'sender_id', 'recevier_id', 'chat', 'read'
+        'sender_id', 'receiver_id', 'chat', 'read'
     ];
 
     protected $appends = ['sender', 'receiver'];
@@ -18,6 +18,6 @@ class Chat extends Model
     }
 
     public function getReceiverAttribute() {
-        return User::where('id', $this->recevier_id)->first();
+        return User::where('id', $this->receiver_id)->first();
     }
 }

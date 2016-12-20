@@ -1,9 +1,11 @@
 <script>
   import {mapState} from 'vuex'
   import ChatUserList from './../components/chat/ChatUserList'
+  import ChatWidget from './../components/chat/ChatWidget'
   export default {
     components: {
-      'user-list': ChatUserList
+      'user-list': ChatUserList,
+      'chat-block': ChatWidget
     },
     computed: {
       ...mapState({
@@ -19,18 +21,27 @@
 <template>
   <div class="wrapper" id="chat-wrapper">
     <section class="heading">
-      <h1 class="page-title">Chat</h1>
-      <h4>Get connected with your friends.</h4>
+      <h1 class="page-title">Chat <small>Get connected with your friends.</small></h1>
       <br>
     </section>
 
     <section class="content">
-      <div class="col-md-2" id="user-list-col">
-        <user-list></user-list>
-      </div>
-      <div class="col-md-10" id="chat-content-wrapper">
-        Show the chat content
+      <div class="row">
+        <div class="col-md-2" id="user-list-col">
+          <user-list></user-list>
+        </div>
+        <div class="col-md-10" id="chat-content-wrapper">
+          <chat-block></chat-block>
+        </div>
       </div>
     </section>
   </div>
 </template>
+
+<style lang="scss">
+  @import './../assets/css/variables.scss';
+  #user-list-col {
+    border-right: 1px solid $border-color;
+  }
+
+</style>

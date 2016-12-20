@@ -12,7 +12,7 @@ class ChatController extends Controller
         $authUserId = $request->user()->id;
         $chats = Chat::whereIn('sender_id', [$authUserId, $userId])
             ->whereIn('receiver_id', [$authUserId, $userId])
-            ->orderBy('created_at', 'desc')
+            ->orderBy('created_at', 'asc')
             ->get();
         return response(['data' => $chats], 200);
     }
