@@ -7,6 +7,7 @@ import store from './store'
 import App from './App'
 import DashboardPage from './pages/DashboardPage'
 import LoginPage from './pages/LoginPage'
+import ChatPage from './pages/ChatPage'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
@@ -22,7 +23,8 @@ new Vue({
 
 const routes = [
   {path: '/', component: LoginPage, name: 'home'},
-  {path: '/dashboard', component: DashboardPage, name: 'dashboard', meta: {requiresAuth: true}}
+  {path: '/dashboard', component: DashboardPage, name: 'dashboard', meta: {requiresAuth: true}},
+  {path: '/chat', component: ChatPage, name: 'chat', meta: {requiresAuth: true}}
 ]
 
 const router = new VueRouter({
