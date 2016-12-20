@@ -20,6 +20,8 @@
   <div class="wrapper" id="chat-wrapper">
     <section class="heading">
       <h1 class="page-title">Chat</h1>
+      <h4>Get connected with your friends.</h4>
+      <br>
     </section>
 
     <section class="content">
