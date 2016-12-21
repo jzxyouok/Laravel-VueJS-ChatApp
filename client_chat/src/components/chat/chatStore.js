@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import {userListUrl, getHeader, getUserConversationUrl} from './../../config'
+import {userListUrl, getHeader, getUserConversationUrl, saveChatMessageUrl} from './../../config'
 
 const state = {
   userList: {},
@@ -16,7 +16,11 @@ const mutations = {
   },
   SET_CONVERSATION (state, conversation) {
     state.conversation = conversation
+  },
+  ADD_CHAT_TO_CONVERSATION (state, chat) {
+    state.conversation.push(chat)
   }
+
 }
 
 const actions = {
@@ -39,6 +43,15 @@ const actions = {
         commit('SET_CURRENT_CHAT_USER', user)
         commit('SET_CONVERSATION', response.body.data)
       })
+  },
+  addNewChatToConversation: ({commit}, postData) => {
+    return Vue.http.post(saveChatMessageUrl, postData, {headers: getHeader()})
+      .then(response => {
+        commit('ADD_CHAT_TO_CONVERSATION', response.body.data)
+      })
+  },
+  newIncomingChat: ({commit}, chatMessage) => {
+    commit('ADD_CHAT_TO_CONVERSATION', chatMessage)
   }
 }
 

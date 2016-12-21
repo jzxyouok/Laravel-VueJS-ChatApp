@@ -8,9 +8,11 @@ import App from './App'
 import DashboardPage from './pages/DashboardPage'
 import LoginPage from './pages/LoginPage'
 import ChatPage from './pages/ChatPage'
+import Logger from './plugins/Logger'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
+Vue.use(Logger, {loggin: true})
 Vue.component('app', App)
 /* eslint-disable no-new */
 /*
@@ -42,6 +44,14 @@ router.beforeEach((to, from, next) => {
     }
   }
   next()
+})
+
+Vue.http.interceptors.push((request, next) => {
+  next((response) => {
+    if (response.status === 401) {
+      console.log('Need to login again')
+    }
+  })
 })
 
 new Vue({

@@ -18,7 +18,13 @@
         return false
       },
       changeChatUser (user) {
-        this.$store.dispatch('setCurrentChatUser', user)
+        if (this.chatStore.currentChatUser === null || this.chatStore.currentChatUser.id !== user.id) {
+          this.$store.dispatch('setCurrentChatUser', user)
+            .then(response => {
+              let element = document.getElementById('chat-widget-wrapper')
+              element.scrollIntoView(false)
+            })
+        }
       }
     }
   }
@@ -28,7 +34,7 @@
   <div class="wrapper" id="chat-user-list-wrapper">
     <ul class="list-group">
       <li
-        class="list-group-item"
+        class="list-group-item pointer"
         :class="[{active: userActiveStyle(user)}]"
         v-on:click="changeChatUser(user)"
         v-if="user.name !== userStore.authUser.name"

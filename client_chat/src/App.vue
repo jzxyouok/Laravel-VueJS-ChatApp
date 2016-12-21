@@ -21,7 +21,7 @@
       })
     },
     created () {
-      console.log('I was created!')
+      // console.log('I was created!')
       const userObj = JSON.parse(window.localStorage.getItem('authUser'))
       this.$store.dispatch('setUserObject', userObj)
     }
@@ -34,8 +34,10 @@
     <router-view></router-view>
   </div>
 </template>
+
 <style lang="sass">
   @import './assets/css/bootstrap.css'
+  @import './assets/css/global.scss'
 </style>
 
 
