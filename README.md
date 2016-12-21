@@ -9,5 +9,6 @@
   2. Vue.js: vue-router, vue-resource, webpack, node-sass, sass-loader, vuex, pusher-js https://www.npmjs.com/package/pusher-js
 * 支援行動裝置（RWD設計）
 
-## 聊天
+## 聊天畫面
+可選擇聊天對象、輸入文字即可進行聊天
 ![](https://github.com/cora-chou/cora-chou.github.io/blob/master/img/Laravel-VueJS-ChatApp/chatApp.png)
